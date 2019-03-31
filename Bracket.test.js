@@ -13,26 +13,26 @@ describe('Bracket', () => {
 
   it('can calculate the taxable income', () => {
     const income = 15000;
-    const taxable = bracket.calculateTaxableIncome(income);
+    const taxable = bracket.taxable(income);
     expect(taxable).toEqual(income - min);
   });
 
   it('can calculate the taxable income when less than the range', () => {
     const income = 5000;
-    const taxable = bracket.calculateTaxableIncome(income);
+    const taxable = bracket.taxable(income);
     expect(taxable).toEqual(0);
   });
 
   it('can calculate the taxable income when greater than the range', () => {
     const income = 25000;
-    const taxable = bracket.calculateTaxableIncome(income);
+    const taxable = bracket.taxable(income);
     expect(taxable).toEqual(max - min);
   });
 
   it('can calculate the taxes', () => {
     const income = 15000;
-    const taxable = bracket.calculateTaxableIncome(income);
-    const taxes = bracket.calculateTax(income);
+    const taxable = bracket.taxable(income);
+    const taxes = bracket.calculate(income);
     expect(taxes).toEqual(taxable * rate);
   });
 });

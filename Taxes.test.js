@@ -3,7 +3,7 @@ import Taxes from './Taxes';
 describe('Taxes', () => {
   let brackets;
 
-  it('can calculate the taxes', () => {
+  it('can combine taxes from the brackets', () => {
     const brackets = [
       createBracketWithTaxes(2000),
       createBracketWithTaxes(3000),
@@ -16,7 +16,7 @@ describe('Taxes', () => {
 
 function createBracketWithTaxes(taxes) {
   return {
-    calculateTaxableIncome: () => 0,
-    calculateTax: () => taxes,
+    taxable: () => 0,
+    calculate: () => taxes,
   };
 }

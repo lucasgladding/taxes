@@ -1,8 +1,8 @@
-import { calculateTax } from './helpers';
+import { round } from './helpers';
 
-describe('calculateTax', () => {
-  it('calculates taxes on $80,000', () => {
-    const taxes = calculateTax(80000);
-    expect(taxes).toEqual(13780.35);
+describe('round', () => {
+  it('can round to the specified digits', () => {
+    const rounded = round(123.456);
+    expect(rounded).toEqual(123.46);
   });
 });

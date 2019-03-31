@@ -1,3 +1,5 @@
+import { round } from './helpers';
+
 interface BracketOptions {
   min: number;
   max: number;
@@ -15,20 +17,16 @@ class Bracket {
     this.rate = options.rate;
   }
 
-  calculateTaxableIncome(income: number): number {
+  taxable(income: number): number {
     const capped = income > this.max ? this.max : income;
     const taxable = capped - this.min;
     return taxable > 0 ? taxable : 0;
   }
 
-  calculateTax(income: number): number {
-    const taxable = this.calculateTaxableIncome(income);
-    return digits(taxable * this.rate);
+  calculate(income: number): number {
+    const taxable = this.taxable(income);
+    return round(taxable * this.rate);
   }
-}
-
-function digits(value: number, digits: number = 2) {
-  return Math.round(value * 100) / 100;
 }
 
 export default Bracket;

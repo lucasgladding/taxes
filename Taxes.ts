@@ -13,7 +13,7 @@ class Taxes {
 
   calculate(income: number): number {
     return this.brackets.reduce((taxes: number, bracket: Bracket) => {
-      return taxes + bracket.calculateTax(income);
+      return taxes + bracket.calculate(income);
     }, 0);
   }
 }
